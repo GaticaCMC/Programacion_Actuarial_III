@@ -95,3 +95,174 @@ data
 data <- read.table("Datos_S&P.csv",T,",")
 data
 
+data <- read.table("Datos_S&P.csv",T,",", nrows= 100)
+clases <- sapply(data, class) #aplica la funcion class columna por columna para ver que tipo de clase es 
+
+data <- read.table("Datos_S&P.csv",T,",", colClasses = clases)
+data
+
+#USO DE dput Y dget
+
+y <- data.frame(a=1, b="a")
+dput(y)
+dput(y,file= "y.R") #guarda objetos uno es especifico
+nueva.y <- dget("y.R")
+y
+nueva.y
+
+x<- "Programacion Actuarial III"
+y<- data.frame(a=1, b="a")
+dump (c("x","y"), file= "data.R")
+rm(x,y) #elimina objetos
+x
+y
+source("data.R")
+x
+y
+
+aa <
+dput(aa,file= "airquality_CG.R") #guarda objetos uno en especifico
+aa
+rm(aa)
+aa
+
+con <- url ("http://www.fcfm.buap.mx/", "r")
+x<- readLines(con, 7)
+x
+
+x<- c("a","b","c", "c", "d", "e")
+x
+x[1] #extraemos elementos con []
+x[2]
+x[1:4] #también se puede extraer secuencia de elementos
+x[x>"b"] # es posible extraer elementos que cuentan con restricción
+
+u<- x == "c" # de igual manera se puede obetener un vector lógico 
+u
+
+
+x<- list (foo = 1:4,bar = 0.6)
+x
+x[1]  # se extrae el primer elemento de la lista, este es una lista que contiene una secuencia
+x[[1]] # se extrae el primer elemento de la lista, ahora es la secuencia en sí
+x$bar #se extrae un elemento por nombre
+x[["bar"]]
+x["bar"]
+x$foo[[2]]
+
+x<- list (foo = 1:4,bar = 0.6,baz="Hola")
+x[c(1,3)] #extrae el primer y el tercer elemento de una lista
+
+x<- list (foo = 1:4,bar = 0.6,baz="Hola")
+x[[c(1,3)]] #extrae el tercer elemento del primer objeto
+
+x<- list(a=list(10,12,14), b= list(3.14, 2.81))
+x[[c(1,3)]]
+x[[1]][[3]]
+x[[1]][3]
+x[[c(2,1)]]
+
+x<- matrix(1:6,2,3)
+x
+x[1,2]
+  x[2,1]
+  x[1,]
+  x[,2]
+  
+x[1,2,drop=F] #ensena matriz de 1x1, drop=F matiene la dimensión
+
+x[1, ,drop=F]
+  
+
+x<- list(aardvark=1:5)
+x$a  #porque así comienza el nombre del primer elemento de la lista
+
+x[["a"]]
+x[["a",exact=F]]
+
+
+#VALORES FALTANTES
+airquality[1:6,]
+completos<- complete.cases(airquality)
+completos   #si está completo pone TRUE y si no, FALSE
+
+airquality[completos,][1:6,]
+airquality[1:6,][completos,]
+
+
+x<- 1:4; y<-6:9
+x+y
+x>2
+x>=2
+y==8
+x*y
+x/y
+
+
+#CICLOS FOR
+
+for (i in 1:10){
+  print(i)
+}
+
+x<- c("a","b","c","d")
+for (i in 1:4){
+  print(x[i])
+}
+
+for (i in seq_along(x)){
+  print(x[i])
+  
+}
+
+for (letra in x){
+  print(x[i])
+}
+
+for (i in 1:4) print(x[i])
+
+m <- matrix(1:6,2,3)
+m
+
+for (i in seq_len(nrow(m))){
+  for(j in seq_len(ncol(m))){
+       print (m[i,j])
+  }
+}
+
+
+menor3 <- 0
+mayor10 <- 0
+
+
+for (i in 1:100){
+  
+z<-5
+caminata <- vector("numeric")
+while (z>=3 && z<=10){
+  print(caminata)
+  caminata <- c(caminata,z)
+  moneda <- rbinom(1,1,0.5)
+  if (moneda == 1){
+    z<- z + 1
+  } else{
+    z<- z - 1
+  }
+}
+
+if(z > 10){
+    mayor10 <- mayor10 + 1
+  } else {
+    menor3 <- menor3 + 1
+  }
+  
+}
+x<- data.frame(mayor10 , menor3)
+row.names(x) <- c("Salidas")
+x
+nrow(x)
+ncol(x)
+attributes(x)
+names(x) <- c("Mayor a 10","Menor a 3")
+x
+
