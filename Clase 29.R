@@ -18,6 +18,9 @@ y<- c("a","b","c")
 z<- c(x,y)
 z
 
+
+
+
 m1 <- rbind(m,x)
 m1
 m2 <- cbind(m,x)
