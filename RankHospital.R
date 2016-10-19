@@ -6,7 +6,7 @@ rankhospital <- function(estado, resultado, op = "mejor"){
     
     data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
     #encontramos el nombre de cada 
-    #tado y resultado y validamos   
+    #estado y resultado y validamos   
     est <- levels(factor(data[,7]))
     res <- c("infarto", "falla", "neumonia")
     

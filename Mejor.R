@@ -4,7 +4,7 @@ setwd("~/GitHub/Programacion_Actuarial_III")
 mejor <- function(estado,resultado){
     data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
  #encontramos el nombre de cada 
-    #tado y resultado y validamos   
+    #estado y resultado y validamos   
     est <- levels(factor(data[,7]))
     res <- c("infarto", "falla", "neumonia")
     
@@ -30,7 +30,7 @@ mejor <- function(estado,resultado){
     else{
         u<- enc[- grep("Not", enc[,2]),]
         #grep busca coincidencias con el
-        #rgumento para cada elemento de un vector de c.
+        #argumento para cada elemento de un vector de c.
         
         x <- u[order(as.numeric(u[,2])),]
         y <- x[which(x[,2] == x[1,2]),]
